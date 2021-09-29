@@ -4,6 +4,7 @@
 #                                           #
 #############################################
 
+#!/bin/bash
 SONAR_CONTAINER="sonarqube"
 SONAR_PORT="9000"
 SONAR_DB_NAME="sonarqube_db"
