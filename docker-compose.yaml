@@ -28,7 +28,7 @@ services:
           memory: 200M
 
   db:
-    image: postgres
+    image: postgres:alpine
     networks:
       - sonarnet
     environment:
