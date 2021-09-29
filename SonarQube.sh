@@ -33,7 +33,7 @@ docker run -itd --name $SONAR_CONTAINER.postgres \
     -e POSTGRES_PASSWORD=$SONAR_DB_PASSWORD \
     -e POSTGRES_USER=$SONAR_DB_USER \
     -e POSTGRES_DB=$SONAR_DB_NAME \
-    -e "TZ=America/Mexico_City" \
+    -e "TZ=America/Bogota" \
     -v /etc/localtime:/etc/localtime:ro \
     -v /var/containers/$SONAR_CONTAINER/var/lib/postgresql/data:/var/lib/postgresql/data:z \
     postgres:alpine
@@ -46,7 +46,7 @@ docker run -itd --name $SONAR_CONTAINER \
     -e SONAR_JDBC_URL=$SONAR_DB_URL \
     -e SONAR_JDBC_USERNAME=$SONAR_DB_USER \
     -e SONAR_JDBC_PASSWORD=$SONAR_DB_PASSWORD \
-    -e "TZ=America/Mexico_City" \
+    -e "TZ=America/Bogota" \
     -v /etc/localtime:/etc/localtime:ro \
     -v /var/containers/$SONAR_CONTAINER/opt/sonarqube/data:/opt/sonarqube/data:z \
     -v /var/containers/$SONAR_CONTAINER/opt/sonarqube/extensions:/opt/sonarqube/extensions:z \
