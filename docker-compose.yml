@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+  sonarqube:
+    image: sonarqube:8.9.10-community
+    depends_on:
+      - db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonar
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    
+    volumes:
+      
+      - type: bind
+        source: /var/containers/sonarqube:8.9.10-community/data
+        target: /opt/sonarqube/data
+      - type: bind
+        source: /var/containers/sonarqube:8.9.10-community/extensions
+        target: /opt/sonarqube/extensions
+      - type: bind
+        source: /var/containers/sonarqube:8.9.10-community/logs
+        target: /opt/sonarqube/logs
+    ports:
+      - "9000:9000"
+  init:
+      image: bash
+      privileged: true
+      user: root
+      volumes:
+        - ./init.sh:/mnt/init.sh 
+      command: ["sh", "-e", "/mnt/init.sh"]
+  db:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+    volumes:
+      - type: bind
+        source: /var/containers/sonarqube:8.9.10-community/postgresql/conf
+        target: /var/lib/postgresql
+      - type: bind
+        source: /var/containers/sonarqube:8.9.10-community/postgresql/data
+        target: /var/lib/postgresql/data
