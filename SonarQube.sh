@@ -53,4 +53,4 @@ docker run -itd --name $SONAR_CONTAINER \
     -v /var/containers/$SONAR_CONTAINER/opt/sonarqube/logs:/opt/sonarqube/logs:z \
     -v /var/containers/$SONAR_CONTAINER/var/sonarqube-scanners:/var/sonarqube-scanners:z \
     --link $SONAR_CONTAINER.postgres:$SONAR_CONTAINER.postgres \
-    sonarqube:8.3.1-community
+    sonarqube:8.9.10-community
